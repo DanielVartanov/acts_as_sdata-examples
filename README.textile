@@ -1,0 +1,80 @@
+h1. Usage examples of acts_as_sdata plugin
+
+"acts_as_sdata":http://github.com/DanielVartanov/acts_as_sdata is an implementation of SData (Sage Data) protocol in Ruby.
+This repo contains examples of acts_as_sdata adoptions.
+
+h2. Presidents
+
+This application exposes the list of US presidents in SData way.
+
+From client side it looks like this:
+
+h3. Instance path
+
+<code>http://localhost:3000/presidents/!Wilson</code>
+
+<pre><?xml version="1.0" encoding="UTF-8"?>
+<entry xmlns="http://www.w3.org/2005/Atom">
+  <title>Wilson, Woodrow</title>
+  <summary>Wilson, Woodrow (1856-1924)</summary>
+</entry></pre>
+
+h3. Collection path
+
+<code>http://localhost:3000/presidents</code>
+
+<pre><?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6</id>
+  <title>List of US presidents</title>
+  <updated>2009-11-17T10:55:28+06:00</updated>
+  <link href="http://example.com/presidents"/>
+  <author>
+    <name>Sage</name>
+  </author>
+  <entry>
+    <title>Washington, George</title>
+    <summary>Washington, George (1732-1799)</summary>
+  </entry>
+  <entry>
+    <title>Adams, John</title>
+    <summary>Adams, John (1735-1826)</summary>
+  </entry>
+.....
+</pre>
+
+h3. Predicate
+
+<code>http://localhost:3000/presidents(born_at gt 1900)</code>
+_(all presidents born in XX century)_
+
+<pre><?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>urn:uuid:60a76c80-d399-11d9-b93C-0003939e0af6</id>
+  <title>List of US presidents</title>
+  <updated>2009-11-17T10:58:15+06:00</updated>
+  <link href="http://example.com/presidents"/>
+  <author>
+    <name>Sage</name>
+  </author>
+  <entry>
+    <title>Kennedy, John</title>
+    <summary>Kennedy, John (1917-1963)</summary>
+  </entry>
+  <entry>
+    <title>Johnson, Lyndon</title>
+    <summary>Johnson, Lyndon (1908-1973)</summary>
+  </entry>
+.....
+</pre>
+
+h3. How to install 'presidents'
+
+Clone and set up modules:
+<code>$ git clone git://github.com/DanielVartanov/acts_as_sdata-examples.git</code>
+<code>$ cd acts_as_sdata-examples</code>
+<code>$ git submodule init</code>
+<code>$ git submodule update</code>
+
+Then, run it:
+<code>$ script/server</code>
