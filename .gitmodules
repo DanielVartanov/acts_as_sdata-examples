@@ -1,0 +1,6 @@
+[submodule "presidents/vendor/plugins/acts_as_sdata"]
+	path = presidents/vendor/plugins/acts_as_sdata
+	url = git://github.com/DanielVartanov/acts_as_sdata.git
+[submodule "presidents/vendor/plugins/usher"]
+	path = presidents/vendor/plugins/usher
+	url = git://github.com/joshbuddy/usher.git
