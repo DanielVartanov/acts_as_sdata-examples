@@ -1,0 +1,1035 @@
+# Logfile created on Wed Oct 28 19:07:00 +0600 2009  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "presidents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "born_at" integer, "died_at" integer, "order" integer, "party" varchar(255), "term_started_at" integer, "term_ended_at" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20091009101447')[0m
+
+
+Processing PresidentsController#sdata_show (for 127.0.0.1 at 2009-10-28 20:41:47) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mPresident Load (0.4ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."id" = 1) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find President with ID=1):
+  app/controllers/presidents_controller.rb:16:in `sdata_show'
+
+Rendered rescues/_trace (250.4ms)
+Rendered rescues/_request_and_response (4.1ms)
+Rendering rescues/layout (not_found)
+
+
+Processing PresidentsController#sdata_show (for 127.0.0.1 at 2009-10-28 20:42:04) [GET]
+  Parameters: {"id"=>"111"}
+  [4;35;1mPresident Load (0.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."id" = 111) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find President with ID=111):
+  app/controllers/presidents_controller.rb:16:in `sdata_show'
+
+Rendered rescues/_trace (90.6ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (not_found)
+
+
+Processing PresidentsController#sdata_show (for 127.0.0.1 at 2009-10-28 20:42:10) [GET]
+  Parameters: {"id"=>"200"}
+  [4;36;1mPresident Load (0.4ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."id" = 200) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find President with ID=200):
+  app/controllers/presidents_controller.rb:16:in `sdata_show'
+
+Rendered rescues/_trace (291.9ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (not_found)
+
+
+Processing PresidentsController#sdata_show (for 127.0.0.1 at 2009-10-28 20:42:13) [GET]
+  Parameters: {"id"=>"300"}
+  [4;35;1mPresident Load (0.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."id" = 300) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find President with ID=300):
+  app/controllers/presidents_controller.rb:16:in `sdata_show'
+
+Rendered rescues/_trace (92.5ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (not_found)
+  [4;36;1mPresident Load (16.5ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-28 20:45:21) [GET]
+  Parameters: {"id"=>"88"}
+  [4;36;1mPresident Load (1.0ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."id" = 88) [0m
+Completed in 21ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!88]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-28 20:48:26) [GET]
+  [4;35;1mPresident Load (15.6ms)[0m   [0mSELECT * FROM "presidents" [0m
+Completed in 61ms (View: 17, DB: 16) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-28 20:48:36) [GET]
+  Parameters: {"predicate"=>"born"}
+  [4;36;1mPresident Load (27.9ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 76ms (View: 18, DB: 28) | 200 OK [http://localhost/presidents(born)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-28 20:49:13) [GET]
+  Parameters: {"predicate"=>"born_at%20gt%201900"}
+  [4;36;1mPresident Load (15.4ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ('born_at' > '1900') [0m
+Completed in 61ms (View: 16, DB: 15) | 200 OK [http://localhost/presidents(born_at%20gt%201900)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-28 20:49:38) [GET]
+  Parameters: {"predicate"=>"born_at%20gt%201900"}
+  [4;35;1mPresident Load (15.9ms)[0m   [0mSELECT * FROM "presidents" WHERE ('born_at' > '1900') [0m
+Completed in 62ms (View: 17, DB: 16) | 200 OK [http://localhost/presidents(born_at%20gt%201900)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-28 20:49:47) [GET]
+  Parameters: {"predicate"=>"born_at%20gt%201950"}
+  [4;36;1mPresident Load (7.8ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ('born_at' > '1950') [0m
+Completed in 30ms (View: 8, DB: 8) | 200 OK [http://localhost/presidents(born_at%20gt%201950)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-28 20:50:01) [GET]
+  Parameters: {"predicate"=>"born_at%20gt%201970"}
+  [4;35;1mPresident Load (17.3ms)[0m   [0mSELECT * FROM "presidents" WHERE ('born_at' > '1970') [0m
+Completed in 68ms (View: 18, DB: 17) | 200 OK [http://localhost/presidents(born_at%20gt%201970)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-28 20:50:04) [GET]
+  Parameters: {"predicate"=>"born_at%20gt%201960"}
+  [4;36;1mPresident Load (15.7ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ('born_at' > '1960') [0m
+Completed in 64ms (View: 16, DB: 16) | 200 OK [http://localhost/presidents(born_at%20gt%201960)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-28 20:50:58) [GET]
+  Parameters: {"predicate"=>"born_at%20eq%201961"}
+  [4;35;1mPresident Load (0.7ms)[0m   [0mSELECT * FROM "presidents" WHERE ('born_at' = '1961') [0m
+Completed in 10ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents(born_at%20eq%201961)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-28 20:51:18) [GET]
+  Parameters: {"predicate"=>"last_name%20eq%20Obama"}
+  [4;36;1mPresident Load (0.9ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ('last_name' = 'Obama') [0m
+Completed in 11ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents(last_name%20eq%20Obama)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-28 20:51:29) [GET]
+  Parameters: {"predicate"=>"last_namae%20eq%20Obama"}
+  [4;35;1mPresident Load (0.8ms)[0m   [0mSELECT * FROM "presidents" WHERE ('last_namae' = 'Obama') [0m
+Completed in 10ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents(last_namae%20eq%20Obama)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-29 11:34:08) [GET]
+  Parameters: {"predicate"=>"last_nama%20eq%20Obama"}
+  [4;36;1mPresident Load (1.0ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("last_nama" = 'Obama') [0m
+Completed in 10ms (View: 3, DB: 1) | 200 OK [http://localhost/presidents(last_nama%20eq%20Obama)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-29 11:34:18) [GET]
+  Parameters: {"predicate"=>"last_name%20eq%20Obama"}
+  [4;35;1mPresident Load (1.6ms)[0m   [0mSELECT * FROM "presidents" WHERE ("last_name" = 'Obama') [0m
+Completed in 23ms (View: 3, DB: 2) | 200 OK [http://localhost/presidents(last_name%20eq%20Obama)]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-10-29 11:34:36) [GET]
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.params):
+  
+
+Rendered rescues/_trace (65.3ms)
+Rendered rescues/_request_and_response (4.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-29 11:34:47) [GET]
+  Parameters: {"id"=>"88"}
+  [4;36;1mPresident Load (1.0ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."id" = 88) [0m
+Completed in 28ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!88]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-29 11:35:39) [GET]
+  Parameters: {"predicate"=>"id%20eq%2088"}
+  [4;35;1mPresident Load (1.3ms)[0m   [0mSELECT * FROM "presidents" WHERE ("id" = '88') [0m
+Completed in 32ms (View: 9, DB: 1) | 200 OK [http://localhost/presidents(id%20eq%2088)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-29 11:36:04) [GET]
+  Parameters: {"predicate"=>"born_at%20eq%201961"}
+  [4;36;1mPresident Load (1.4ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("born_at" = '1961') [0m
+Completed in 21ms (View: 3, DB: 1) | 200 OK [http://localhost/presidents(born_at%20eq%201961)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-29 11:36:12) [GET]
+  Parameters: {"predicate"=>"born_at%20lt%201961"}
+  [4;35;1mPresident Load (17.2ms)[0m   [0mSELECT * FROM "presidents" WHERE ("born_at" < '1961') [0m
+Completed in 64ms (View: 17, DB: 17) | 200 OK [http://localhost/presidents(born_at%20lt%201961)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-29 11:36:19) [GET]
+  Parameters: {"predicate"=>"born_at%20gt%201950"}
+  [4;36;1mPresident Load (1.5ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("born_at" > '1950') [0m
+Completed in 24ms (View: 4, DB: 2) | 200 OK [http://localhost/presidents(born_at%20gt%201950)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-10-29 11:36:24) [GET]
+  Parameters: {"predicate"=>"born_at%20gt%201940"}
+  [4;35;1mPresident Load (1.0ms)[0m   [0mSELECT * FROM "presidents" WHERE ("born_at" > '1940') [0m
+Completed in 23ms (View: 14, DB: 1) | 200 OK [http://localhost/presidents(born_at%20gt%201940)]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-29 12:08:34) [GET]
+  Parameters: {"id"=>"Obama"}
+  [4;36;1mPresident Load (1.2ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."id" = 0) [0m
+
+ActiveRecord::RecordNotFound (Couldn't find President with ID=Obama):
+  app/controllers/presidents_controller.rb:16:in `sdata_instance'
+
+Rendered rescues/_trace (85.9ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (not_found)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-29 15:27:00) [GET]
+  Parameters: {"id"=>"Obama"}
+
+ActiveRecord::RecordNotFound (Couldn't find President without an ID):
+  lib/sdata/active_record_extensions.rb:32:in `find_by_sdata_instance_id'
+  app/controllers/presidents_controller.rb:16:in `sdata_instance'
+
+Rendered rescues/_trace (246.4ms)
+Rendered rescues/_request_and_response (4.1ms)
+Rendering rescues/layout (not_found)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-29 15:28:03) [GET]
+  Parameters: {"id"=>"Obama"}
+
+ActiveRecord::RecordNotFound (Couldn't find President without an ID):
+  lib/sdata/active_record_extensions.rb:32:in `find_by_sdata_instance_id'
+  app/controllers/presidents_controller.rb:16:in `sdata_instance'
+
+Rendered rescues/_trace (91.8ms)
+Rendered rescues/_request_and_response (0.9ms)
+Rendering rescues/layout (not_found)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-29 15:28:14) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+
+ActiveRecord::RecordNotFound (Couldn't find President without an ID):
+  lib/sdata/active_record_extensions.rb:32:in `find_by_sdata_instance_id'
+  app/controllers/presidents_controller.rb:16:in `sdata_instance'
+
+Rendered rescues/_trace (263.2ms)
+Rendered rescues/_request_and_response (4.0ms)
+Rendering rescues/layout (not_found)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-29 15:30:30) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+
+ActiveRecord::RecordNotFound (Couldn't find President without an ID):
+  lib/sdata/active_record_extensions.rb:32:in `find_by_sdata_instance_id'
+  app/controllers/presidents_controller.rb:16:in `sdata_instance'
+
+Rendered rescues/_trace (94.1ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (not_found)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-29 15:34:19) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+
+ActiveRecord::RecordNotFound (Couldn't find President without an ID):
+  lib/sdata/active_record_extensions.rb:32:in `find_by_sdata_instance_id'
+  app/controllers/presidents_controller.rb:16:in `sdata_instance'
+
+Rendered rescues/_trace (272.0ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (not_found)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-29 15:34:23) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+
+ActiveRecord::RecordNotFound (Couldn't find President without an ID):
+  lib/sdata/active_record_extensions.rb:32:in `find_by_sdata_instance_id'
+  app/controllers/presidents_controller.rb:16:in `sdata_instance'
+
+Rendered rescues/_trace (90.7ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (not_found)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-29 15:34:30) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+
+ActiveRecord::RecordNotFound (Couldn't find President without an ID):
+  lib/sdata/active_record_extensions.rb:34:in `find_by_sdata_instance_id'
+  app/controllers/presidents_controller.rb:16:in `sdata_instance'
+
+Rendered rescues/_trace (120.1ms)
+Rendered rescues/_request_and_response (2.1ms)
+Rendering rescues/layout (not_found)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-29 15:35:53) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.0ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 50ms (View: 1, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-29 15:38:01) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (2.1ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 40ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-29 15:38:03) [GET]
+  Parameters: {"instance_id"=>"Bush"}
+  [4;35;1mPresident Load (1.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Bush') LIMIT 1[0m
+Completed in 22ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!Bush]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-29 15:38:19) [GET]
+  Parameters: {"instance_id"=>"Wilson"}
+  [4;36;1mPresident Load (1.5ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Wilson') LIMIT 1[0m
+Completed in 20ms (View: 3, DB: 2) | 200 OK [http://localhost/presidents/!Wilson]
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mCREATE TABLE "presidents" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar(255), "last_name" varchar(255), "born_at" integer, "died_at" integer, "order" integer, "party" varchar(255), "term_started_at" integer, "term_ended_at" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM "schema_migrations"[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mINSERT INTO "schema_migrations" (version) VALUES ('20091009101447')[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mPresident Load (0.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."id" = 1) [0m
+  [4;36;1mPresident Load (0.4ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."id" = 1) LIMIT 1[0m
+  [4;35;1mPresident Load (1.0ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."id" = 88) LIMIT 1[0m
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-10-30 21:15:25) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.9ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 41ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-10 16:20:56) [GET]
+  [4;36;1mPresident Load (16.3ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 74ms (View: 29, DB: 16) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-10 16:21:09) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (1.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 85ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-10 16:21:33) [GET]
+  Parameters: {"predicate"=>"born_at%20eq%201961"}
+  [4;36;1mPresident Load (1.5ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("born_at" = '1961') [0m
+Completed in 176ms (View: 3, DB: 2) | 200 OK [http://localhost/presidents(born_at%20eq%201961)]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 12:46:09) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+
+ActionController::UnknownAction (No action responded to sdata_instance. Actions: sdata_options and sdata_options=):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 12:48:28) [GET]
+
+ActionController::UnknownAction (No action responded to sdata_collection. Actions: sdata_options and sdata_options=):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 12:49:15) [GET]
+  [4;36;1mPresident Load (18.5ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 69ms (View: 17, DB: 19) | 200 OK [http://localhost/presidents]
+/!\ FAILSAFE /!\  Wed Nov 11 12:50:03 +0600 2009
+  Status: 500 Internal Server Error
+  undefined method `call_with_exception' for ApplicationController:Class
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:90:in `dispatch'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:121:in `_call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/query_cache.rb:29:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/query_cache.rb:29:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/query_cache.rb:9:in `cache'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/query_cache.rb:28:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/params_parser.rb:15:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/failsafe.rb:26:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:114:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/reloader.rb:34:in `run'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:108:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/railties/lib/rails/rack/static.rb:31:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/railties/lib/rails/rack/log_tailer.rb:17:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/chunked.rb:15:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/handler/mongrel.rb:61:in `process'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/handler/mongrel.rb:34:in `run'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/railties/lib/commands/server.rb:111
+    /usr/lib64/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib64/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+  [4;36;1mSQL (1.5ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.9ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+/!\ FAILSAFE /!\  Wed Nov 11 12:51:03 +0600 2009
+  Status: 500 Internal Server Error
+  undefined method `call_with_exception' for ApplicationController:Class
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:90:in `dispatch'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:121:in `_call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/query_cache.rb:29:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/query_cache.rb:29:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/query_cache.rb:9:in `cache'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/query_cache.rb:28:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/params_parser.rb:15:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/failsafe.rb:26:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:114:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/reloader.rb:34:in `run'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:108:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/railties/lib/rails/rack/static.rb:31:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/railties/lib/rails/rack/log_tailer.rb:17:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/chunked.rb:15:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/handler/mongrel.rb:61:in `process'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/handler/mongrel.rb:34:in `run'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/railties/lib/commands/server.rb:111
+    /usr/lib64/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib64/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 12:52:37) [GET]
+
+ActionController::UnknownAction (No action responded to sdata_collection. Actions: sdata_options and sdata_options=):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 12:52:56) [GET]
+  [4;36;1mPresident Load (9.2ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 34ms (View: 9, DB: 9) | 200 OK [http://localhost/presidents]
+
+
+Processing ApplicationController#sdata_instance (for 127.0.0.1 at 2009-11-11 12:53:08) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+
+NoMethodError (undefined method `acts_as_sdata' for PresidentsController:Class):
+  app/controllers/presidents_controller.rb:6
+
+Rendered rescues/_trace (248.1ms)
+Rendered rescues/_request_and_response (19.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 12:54:25) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (2.8ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 43ms (View: 2, DB: 3) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-11-11 12:54:35) [GET]
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.params):
+  
+
+Rendered rescues/_trace (225.3ms)
+Rendered rescues/_request_and_response (4.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#sdata_collection (for 127.0.0.1 at 2009-11-11 12:54:40) [GET]
+
+NoMethodError (undefined method `acts_as_sdata' for PresidentsController:Class):
+  app/controllers/presidents_controller.rb:6
+
+Rendered rescues/_trace (79.3ms)
+Rendered rescues/_request_and_response (0.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing ApplicationController#sdata_instance (for 127.0.0.1 at 2009-11-11 12:55:08) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+
+NoMethodError (undefined method `acts_as_sdata' for PresidentsController:Class):
+  app/controllers/presidents_controller.rb:6
+
+Rendered rescues/_trace (82.2ms)
+Rendered rescues/_request_and_response (0.8ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 12:55:18) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.9ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 41ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing ApplicationController#sdata_instance (for 127.0.0.1 at 2009-11-11 12:55:19) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+
+NoMethodError (undefined method `acts_as_sdata' for PresidentsController:Class):
+  app/controllers/presidents_controller.rb:6
+
+Rendered rescues/_trace (276.5ms)
+Rendered rescues/_request_and_response (4.2ms)
+Rendering rescues/layout (internal_server_error)
+/!\ FAILSAFE /!\  Wed Nov 11 12:55:52 +0600 2009
+  Status: 500 Internal Server Error
+  /home/aldor/development/acts_as_sdata/example-app/app/controllers/application_controller.rb:5: syntax error, unexpected '\n', expecting '='
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activesupport/lib/active_support/dependencies.rb:380:in `load_without_new_constant_marking'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activesupport/lib/active_support/dependencies.rb:380:in `load_file'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activesupport/lib/active_support/dependencies.rb:521:in `new_constants_in'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activesupport/lib/active_support/dependencies.rb:379:in `load_file'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activesupport/lib/active_support/dependencies.rb:259:in `require_or_load'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activesupport/lib/active_support/dependencies.rb:425:in `load_missing_constant'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activesupport/lib/active_support/dependencies.rb:80:in `const_missing'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activesupport/lib/active_support/dependencies.rb:92:in `const_missing'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:89:in `dispatch'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:121:in `_call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:130:in `build_middleware_stack'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/query_cache.rb:29:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/query_cache.rb:29:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/query_cache.rb:34:in `cache'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/query_cache.rb:9:in `cache'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/query_cache.rb:28:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/activerecord/lib/active_record/connection_adapters/abstract/connection_pool.rb:361:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/head.rb:9:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/methodoverride.rb:24:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/params_parser.rb:15:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/session/cookie_store.rb:93:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/failsafe.rb:26:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/lock.rb:11:in `synchronize'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/lock.rb:11:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:114:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/reloader.rb:34:in `run'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/actionpack/lib/action_controller/dispatcher.rb:108:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/railties/lib/rails/rack/static.rb:31:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/urlmap.rb:46:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `each'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/urlmap.rb:40:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/railties/lib/rails/rack/log_tailer.rb:17:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/content_length.rb:13:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/chunked.rb:15:in `call'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/handler/mongrel.rb:61:in `process'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:159:in `process_client'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `each'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:158:in `process_client'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `initialize'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `new'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:285:in `run'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `initialize'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `new'
+    /usr/lib64/ruby/gems/1.8/gems/mongrel-1.1.5/lib/mongrel.rb:268:in `run'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/gems/rack-1.0.0/lib/rack/handler/mongrel.rb:34:in `run'
+    /home/aldor/development/acts_as_sdata/example-app/vendor/rails/railties/lib/commands/server.rb:111
+    /usr/lib64/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `gem_original_require'
+    /usr/lib64/ruby/site_ruby/1.8/rubygems/custom_require.rb:31:in `require'
+    ./script/server:3
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 12:56:09) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.1ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 24ms (View: 1, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 12:56:11) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (1.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 20ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 12:56:11) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.5ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 18ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 12:56:12) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (2.6ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 22ms (View: 2, DB: 3) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:01:24) [GET]
+  [4;36;1mPresident Load (16.5ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 61ms (View: 17, DB: 17) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:01:26) [GET]
+  [4;35;1mPresident Load (16.3ms)[0m   [0mSELECT * FROM "presidents" [0m
+Completed in 59ms (View: 16, DB: 16) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:01:27) [GET]
+  [4;36;1mPresident Load (16.0ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 58ms (View: 15, DB: 16) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:04:22) [GET]
+  [4;36;1mPresident Load (20.6ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 72ms (View: 17, DB: 21) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:04:25) [GET]
+  [4;35;1mPresident Load (8.5ms)[0m   [0mSELECT * FROM "presidents" [0m
+Completed in 30ms (View: 8, DB: 9) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:04:28) [GET]
+  [4;36;1mPresident Load (20.4ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 69ms (View: 18, DB: 20) | 200 OK [http://localhost/presidents]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2009-11-11 13:04:40) [GET]
+
+NoMethodError (You have a nil object when you didn't expect it!
+The error occurred while evaluating nil.params):
+  
+
+Rendered rescues/_trace (67.4ms)
+Rendered rescues/_request_and_response (4.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:04:42) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (1.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 54ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:04:44) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.5ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 18ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:04:45) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (1.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 18ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:04:46) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.5ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 19ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:04:47) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (2.0ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 22ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:06:14) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.9ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 38ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing ApplicationController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:06:16) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+
+NoMethodError (undefined method `acts_as_sdata' for PresidentsController:Class):
+  app/controllers/presidents_controller.rb:6
+
+Rendered rescues/_trace (252.4ms)
+Rendered rescues/_request_and_response (4.2ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:07:19) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (2.1ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 38ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing ApplicationController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:07:20) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+
+NoMethodError (undefined method `acts_as_sdata' for PresidentsController:Class):
+  app/controllers/presidents_controller.rb:6
+
+Rendered rescues/_trace (247.7ms)
+Rendered rescues/_request_and_response (4.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:08:03) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+
+ActionController::UnknownAction (No action responded to sdata_instance. Actions: sdata_options and sdata_options=):
+  
+
+Rendering rescues/layout (not_found)
+
+
+Processing ApplicationController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:09:25) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+
+NameError (undefined local variable or method `receiver' for PresidentsController:Class):
+  lib/sdata/controller_mixin.rb:13:in `acts_as_sdata'
+  app/controllers/presidents_controller.rb:6
+
+Rendered rescues/_trace (40.2ms)
+Rendered rescues/_request_and_response (2.1ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:10:02) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.0ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 19ms (View: 1, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:10:04) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (1.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 17ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:10:04) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.5ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 20ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:10:06) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (1.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 19ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:10:07) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (2.4ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 22ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:10:08) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (1.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 32ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:10:10) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.5ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 36ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:10:38) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.0ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 20ms (View: 1, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:10:41) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (1.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 19ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:10:42) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.5ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 17ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:10:42) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (1.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 19ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:10:43) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.6ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 21ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:10:45) [GET]
+  [4;35;1mPresident Load (18.7ms)[0m   [0mSELECT * FROM "presidents" [0m
+Completed in 73ms (View: 18, DB: 19) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:10:46) [GET]
+  [4;36;1mPresident Load (17.7ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 70ms (View: 21, DB: 18) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:10:46) [GET]
+  [4;35;1mPresident Load (15.9ms)[0m   [0mSELECT * FROM "presidents" [0m
+Completed in 61ms (View: 16, DB: 16) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:10:47) [GET]
+  [4;36;1mPresident Load (16.2ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 224ms (View: 181, DB: 16) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:10:47) [GET]
+  [4;35;1mPresident Load (16.2ms)[0m   [0mSELECT * FROM "presidents" [0m
+Completed in 61ms (View: 17, DB: 16) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:12:54) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (2.7ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 39ms (View: 2, DB: 3) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:12:55) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (1.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 18ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:12:56) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.5ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 18ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:14:13) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.0ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 22ms (View: 1, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:14:16) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (1.6ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 18ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:14:19) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.5ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 18ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:14:22) [GET]
+  [4;35;1mPresident Load (16.4ms)[0m   [0mSELECT * FROM "presidents" [0m
+Completed in 62ms (View: 17, DB: 16) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:14:24) [GET]
+  [4;36;1mPresident Load (17.5ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 62ms (View: 17, DB: 17) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:14:25) [GET]
+  [4;35;1mPresident Load (16.5ms)[0m   [0mSELECT * FROM "presidents" [0m
+Completed in 59ms (View: 15, DB: 17) | 200 OK [http://localhost/presidents]
+
+
+Processing ApplicationController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:15:07) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+
+NoMethodError (undefined method `acts_as_sdata' for PresidentsController:Class):
+  app/controllers/presidents_controller.rb:6
+
+Rendered rescues/_trace (51.8ms)
+Rendered rescues/_request_and_response (2.3ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:15:37) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (0.9ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 19ms (View: 1, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:15:38) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (1.5ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 19ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:15:39) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.5ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 19ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:15:41) [GET]
+  [4;35;1mPresident Load (17.7ms)[0m   [0mSELECT * FROM "presidents" [0m
+Completed in 66ms (View: 18, DB: 18) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:16:53) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.9ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 40ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:16:54) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (1.6ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 19ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:16:55) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (1.5ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 17ms (View: 2, DB: 1) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-11 13:16:56) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;35;1mPresident Load (1.7ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 19ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:16:58) [GET]
+  [4;36;1mPresident Load (17.3ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 64ms (View: 16, DB: 17) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-11 13:16:59) [GET]
+  [4;35;1mPresident Load (16.1ms)[0m   [0mSELECT * FROM "presidents" [0m
+Completed in 64ms (View: 19, DB: 16) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-17 10:44:55) [GET]
+  [4;36;1mPresident Load (18.5ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 67ms (View: 17, DB: 19) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-17 10:50:22) [GET]
+  Parameters: {"instance_id"=>"Obama"}
+  [4;36;1mPresident Load (2.8ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Obama') LIMIT 1[0m
+Completed in 98ms (View: 2, DB: 3) | 200 OK [http://localhost/presidents/!Obama]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-17 10:54:19) [GET]
+  Parameters: {"instance_id"=>"Wilson"}
+  [4;35;1mPresident Load (1.8ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Wilson') LIMIT 1[0m
+Completed in 18ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Wilson]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-17 10:55:28) [GET]
+  [4;36;1mPresident Load (15.6ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 72ms (View: 15, DB: 16) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-17 10:57:52) [GET]
+  Parameters: {"predicate"=>"born_at%20at%201900"}
+  [4;35;1mPresident Load (17.7ms)[0m   [0mSELECT * FROM "presidents" [0m
+Completed in 63ms (View: 17, DB: 18) | 200 OK [http://localhost/presidents(born_at%20at%201900)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-17 10:58:15) [GET]
+  Parameters: {"predicate"=>"born_at%20gt%201900"}
+  [4;36;1mPresident Load (2.3ms)[0m   [0;1mSELECT * FROM "presidents" WHERE ("born_at" > '1900') [0m
+Completed in 14ms (View: 3, DB: 2) | 200 OK [http://localhost/presidents(born_at%20gt%201900)]
+
+
+Processing PresidentsController#sdata_collection (for 127.0.0.1 at 2009-11-18 17:07:50) [GET]
+  [4;36;1mPresident Load (17.2ms)[0m   [0;1mSELECT * FROM "presidents" [0m
+Completed in 67ms (View: 17, DB: 17) | 200 OK [http://localhost/presidents]
+
+
+Processing PresidentsController#sdata_instance (for 127.0.0.1 at 2009-11-18 17:07:57) [GET]
+  Parameters: {"instance_id"=>"Wilson"}
+  [4;35;1mPresident Load (2.2ms)[0m   [0mSELECT * FROM "presidents" WHERE ("presidents"."last_name" = 'Wilson') LIMIT 1[0m
+Completed in 91ms (View: 2, DB: 2) | 200 OK [http://localhost/presidents/!Wilson]
