@@ -9,13 +9,13 @@ end
 
 President.delete_all
 
-File.open(File.join(File.dirname(__FILE__), 'presidents.txt')) do |file|
+File.open(File.join(File.dirname(__FILE__), 'us-presidents.txt')) do |file|
   while (line = file.gets)    
     match_data = line.match /(\d{1,2}). (\w*).*\s(\w*) \((\d{4})-(\d{4}|\s)\)\s*(.*)\s*(\d{4})-(\d{4}|\s)/
 
     attributes_names = %w(order first_name last_name born_at died_at party term_started_at term_ended_at)
     president_attributes = attributes_from_match_data(attributes_names, match_data)
 
-    President.create!(president_attributes)
+    President.create!(president_attributes.merge(:country => 'USA'))
   end
 end
