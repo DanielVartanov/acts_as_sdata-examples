@@ -7,3 +7,12 @@
 [submodule "presidents/vendor/plugins/ratom"]
 	path = presidents/vendor/plugins/ratom
 	url = git@github.com:DanielVartanov/ratom.git
+[submodule "trading-accounts/vendor/plugins/ratom"]
+	path = trading-accounts/vendor/plugins/ratom
+	url = git://github.com/DanielVartanov/ratom.git
+[submodule "trading-accounts/vendor/plugins/usher"]
+	path = trading-accounts/vendor/plugins/usher
+	url = git://github.com/joshbuddy/usher.git
+[submodule "trading-accounts/vendor/plugins/acts_as_sdata"]
+	path = trading-accounts/vendor/plugins/acts_as_sdata
+	url = git://github.com/DanielVartanov/acts_as_sdata.git
