@@ -4,12 +4,6 @@
 [submodule "presidents/vendor/plugins/usher"]
 	path = presidents/vendor/plugins/usher
 	url = git://github.com/joshbuddy/usher.git
-[submodule "presidents/vendor/plugins/ratom"]
-	path = presidents/vendor/plugins/ratom
-	url = git@github.com:DanielVartanov/ratom.git
-[submodule "trading-accounts/vendor/plugins/ratom"]
-	path = trading-accounts/vendor/plugins/ratom
-	url = git://github.com/DanielVartanov/ratom.git
 [submodule "trading-accounts/vendor/plugins/usher"]
 	path = trading-accounts/vendor/plugins/usher
 	url = git://github.com/joshbuddy/usher.git
