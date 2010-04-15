@@ -34,7 +34,8 @@ class SData::TradingAccount < Customer
       :fax                => {:value => self.fax,              :priority => 1},
       :simply_guid        => {:value => self.simply_guid,      :priority => 4},
       :default_contact    => {:value => self.contacts[0],      :priority => 1},
-      :contacts           => {:value => self.contacts,         :priority => 1, :expand => (opts[:expand] || :link)}
+      :contacts           => {:value => self.contacts,         :priority => 1, :expand => (opts[:expand] || :link)},
+      :statuses           => {:value => ['hello', 'goodbye'],  :priority => 1}
     }
   end
 end
