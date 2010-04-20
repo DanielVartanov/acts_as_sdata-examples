@@ -12,10 +12,9 @@ class SData::TradingAccount < Customer
   # rough spec implementation suggestions:
   # not yet implemented -eugene
   # [:expand] - how by default child objects will be rendered. Priorities are
-  #     :none - do not list individual objects
-  #     :link - list urls for individual objects but not their attributes or associations
-  #     :embed - list urls for individual objects including their attributes but not associations
-  #     :embed_with_associations - list urls for individual objects including their attributes and associations
+  #     :none - only show item attribute/link; do not enumerate arrays
+  #     :immediate_children - show item and its immediate contents (attributes/array elements); do not recurse to child's children's attributes
+  #     :all - show item, its contents, and its children's contents (will recurse unless child has a lower :expand value for its own children)
     
   def payload_map(opts={})
     {
@@ -33,17 +32,17 @@ class SData::TradingAccount < Customer
       :phone               => {:value => self.phone,             :priority => 1},
       :fax                 => {:value => self.fax,               :priority => 1},
       :simply_guid         => {:value => self.simply_guid,       :priority => 4},
-      :default_contact     => {:value => self.contacts[0],       :priority => 1}, #test case of single activerecord
-      :contacts            => {:value => self.contacts,          :priority => 1, :expand => (opts[:expand] || :link)}, #test case for array of activerecords
-      :statuses            => {:value => ['status1', 'status2'], :priority => 1},  #test case for array of strings
-      :simple_object_hash  => {:value => {:simple_object_key => 'simple_object_value'}, :priority => 1}, #test case for hash
-      :complex_object_hash => {:value => 
-                                 {:complex_object_key_1 => 'complex_object_key_1', 
-                                   :contacts => self.contacts, 
-                                   :single_contact => self.contacts[0]
-                                 },
-                               :priority => 1
-                              } #test case for complex hash
+      :default_contact     => {:value => self.contacts[0],       :priority => 1, :expand => :all}, #test case of single activerecord
+      :contacts            => {:value => self.contacts,          :priority => 1, :expand => (opts[:expand] || :all)} #test case for array of activerecords
+#      :statuses            => {:value => ['status1', self.contacts], :priority => 1, :expand => 1},  #test case for array of strings
+#      :simple_object_hash  => {:value => {:simple_object_key => 'simple_object_value'}, :priority => 1}, #test case for hash
+#      :complex_object_hash => {:value => 
+#                                 {:complex_object_key_1 => 'complex_object_key_1', 
+#                                   :contacts => self.contacts, 
+#                                   :single_contact => self.contacts[0]
+#                                 },
+#                               :priority => 1
+#                              } #test case for complex hash
     }
   end
 end
