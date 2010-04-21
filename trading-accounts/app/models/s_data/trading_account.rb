@@ -1,5 +1,5 @@
 class SData::TradingAccount < Customer
-  acts_as_sdata :instance_id => :name, :content => :sdata_content
+  acts_as_sdata :instance_id => :id, :content => :sdata_content
 
   def contacts
     SData::Contact.find(:all, :conditions => {:customer_id => self.id})
@@ -9,39 +9,40 @@ class SData::TradingAccount < Customer
     "Trading Account ##{self.id}: #{self.name}"
   end
   
-  # rough spec implementation suggestions:
-  # not yet implemented -eugene
-  # [:expand] - how by default child objects will be rendered. Priorities are
-  #     :none - only show item attribute/link; do not enumerate arrays
-  #     :immediate_children - show item and its immediate contents (attributes/array elements); do not recurse to child's children's attributes
-  #     :all - show item, its contents, and its children's contents (will recurse unless child has a lower :expand value for its own children)
-    
+  #valid values for precedence are 2 (most important) to 99 (least important). recommended values:
+  #2: foreign keys, name, other unique ids (such as guid)
+  #3: important attributes associated with class (e.g. address fields for customer)
+  #4: secondary attributes associated with class (e.g. currency for customer)
+  #5: nonessential associations (e.g. contacts for customer)
+  #value '1' is reserved for primary key which will always be included and thus should not be specified here
   def payload_map(opts={})
     {
-      :name                => {:value => self.name,              :priority => 4}, #test case for single string
-      :website             => {:value => self.website,           :priority => 1},
-      :currency            => {:value => self.currency,          :priority => 2},
-      :taxation_country    => {:value => self.taxation_country,  :priority => 2},
-      :created_by_id       => {:value => self.created_by_id,     :priority => 3}, #test case for single integer
-      :address1            => {:value => self.address1,          :priority => 2},
-      :address2            => {:value => self.address2,          :priority => 2},
-      :city                => {:value => self.city,              :priority => 2},
-      :province_state      => {:value => self.province_state,    :priority => 2},
-      :postalcode_zip      => {:value => self.postalcode_zip,    :priority => 2},
-      :country             => {:value => self.country,           :priority => 2},
-      :phone               => {:value => self.phone,             :priority => 1},
-      :fax                 => {:value => self.fax,               :priority => 1},
-      :simply_guid         => {:value => self.simply_guid,       :priority => 4},
-      :default_contact     => {:value => self.contacts[0],       :priority => 1, :expand => :all}, #test case of single activerecord
-      :contacts            => {:value => self.contacts,          :priority => 1, :expand => (opts[:expand] || :all)} #test case for array of activerecords
-#      :statuses            => {:value => ['status1', self.contacts], :priority => 1, :expand => 1},  #test case for array of strings
-#      :simple_object_hash  => {:value => {:simple_object_key => 'simple_object_value'}, :priority => 1}, #test case for hash
+      :name                => {:value => self.name,              :precedence => 2}, #test case for single string
+      :website             => {:value => self.website,           :precedence => 5},
+      :currency            => {:value => self.currency,          :precedence => 4},
+      :taxation_country    => {:value => self.taxation_country,  :precedence => 4},
+      :created_by_id       => {:value => self.created_by_id,     :precedence => 2}, #test case for single integer
+      :address1            => {:value => self.address1,          :precedence => 3},
+      :address2            => {:value => self.address2,          :precedence => 3},
+      :city                => {:value => self.city,              :precedence => 3},
+      :province_state      => {:value => self.province_state,    :precedence => 3},
+      :postalcode_zip      => {:value => self.postalcode_zip,    :precedence => 3},
+      :country             => {:value => self.country,           :precedence => 3},
+      :phone               => {:value => self.phone,             :precedence => 4},
+      :fax                 => {:value => self.fax,               :precedence => 5},
+      :simply_guid         => {:value => self.simply_guid,       :precedence => 2},
+      :default_contact     => {:value => self.contacts[0],       :precedence => 5}, #test case of single activerecord
+      :contacts            => {:value => self.contacts,          
+                               :precedence => 5, 
+                               :resource_collection => {:url => 'contacts', :parent_key => 'trading_account_id'}}, #test case for array of activerecords
+      :statuses            => {:value => ['status1', 'status2'], :precedence => 5},  #test case for array of strings
+#      :simple_object_hash  => {:value => {:simple_object_key => 'simple_object_value'}, :precedence => 1}, #test case for hash
 #      :complex_object_hash => {:value => 
 #                                 {:complex_object_key_1 => 'complex_object_key_1', 
 #                                   :contacts => self.contacts, 
 #                                   :single_contact => self.contacts[0]
 #                                 },
-#                               :priority => 1
+#                               :precedence => 1
 #                              } #test case for complex hash
     }
   end
