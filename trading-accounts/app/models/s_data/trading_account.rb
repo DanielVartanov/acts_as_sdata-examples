@@ -1,5 +1,5 @@
 class SData::TradingAccount < Customer
-  acts_as_sdata :instance_id => :id, :content => :sdata_content
+  acts_as_sdata :instance_id => :id, :content => :sdata_content, :link => :simply_guid
 
   def contacts
     SData::Contact.find(:all, :conditions => {:customer_id => self.id})
