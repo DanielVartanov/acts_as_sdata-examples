@@ -40,7 +40,8 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
   
   #TODO: move those out of here and into application.yml when it works
-  $APPLICATION_URL = "http://www.billingboss.com"
+  $APPLICATION_HOST = "www.billingboss.com"
+  $APPLICATION_URL = "http://" + $APPLICATION_HOST 
   $SDATA_STORE_PATH = "/sdata/billingboss/crmErp/-/"
  
 end

@@ -38,7 +38,7 @@ class SData::TradingAccount < Customer
       :default_contact     => {:value => self.contacts[0],       :precedence => 5}, #test case of single activerecord
       :contacts            => {:value => self.contacts,          
                                :precedence => 5, 
-                               :resource_collection => {:url => 'contacts', :parent_key => 'trading_account_id'}}, #test case for array of activerecords
+                               :resource_collection => {:url => 'contacts', :parent => 'trading_account'}}, #test case for array of activerecords
       :statuses            => {:value => ['status1', 'status2'], :precedence => 5},  #test case for array of strings
 #      :simple_object_hash  => {:value => {:simple_object_key => 'simple_object_value'}, :precedence => 1}, #test case for hash
 #      :complex_object_hash => {:value => 
