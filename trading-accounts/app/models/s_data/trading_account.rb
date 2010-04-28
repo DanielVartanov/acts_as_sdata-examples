@@ -1,6 +1,10 @@
 class SData::TradingAccount < Customer
   acts_as_sdata :instance_id => :id, :content => :sdata_content, :link => :simply_guid
 
+  def author
+    self.created_by.sage_username
+  end
+
   def contacts
     SData::Contact.find(:all, :conditions => {:customer_id => self.id})
   end
