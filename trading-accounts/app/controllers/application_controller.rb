@@ -2,7 +2,17 @@ class ApplicationController < ActionController::Base
 
   helper :all
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  before_filter :authenticate
+  prepend_before_filter :authenticate
+  
+  def current_user
+    @user || :false
+  end
+  
+  def authentication_required
+    if !@user
+      raise "user not authenticated. turn this into an sdata payload with code 403"
+    end
+  end
   
   def authenticate
     #currently invalidly submitted username/password will be ignored and request treated as if nothing was supplied
