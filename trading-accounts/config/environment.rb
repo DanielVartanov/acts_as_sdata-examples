@@ -42,6 +42,7 @@ Rails::Initializer.run do |config|
   #TODO: move those out of here and into application.yml when it works
   $APPLICATION_HOST = "www.billingboss.com"
   $APPLICATION_URL = "http://" + $APPLICATION_HOST 
-  $SDATA_STORE_PATH = "/sdata/billingboss/crmErp/-/"
+  $SDATA_HIERARCHY = ['billingboss', 'crmErp', '-']
+  $SDATA_STORE_PATH = "/sdata/#{$SDATA_HIERARCHY.join('/')}/"
  
 end
